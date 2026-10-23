@@ -1,0 +1,19 @@
+{
+  "name": "hoantien-shop-clone",
+  "version": "1.0.0",
+  "description": "Bản sao giao diện hoantien.shop - Hoàn tiền Shopee đến 70% mỗi đơn hàng",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "hoantien",
+    "shopee-cashback",
+    "affiliate",
+    "clone",
+    "tailwind"
+  ],
+  "author": "",
+  "license": "MIT"
+}
