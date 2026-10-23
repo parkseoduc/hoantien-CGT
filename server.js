@@ -19,7 +19,7 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  // Enable CORS for easy syncing
+  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -30,6 +30,12 @@ const server = http.createServer((req, res) => {
   }
 
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
+
+  // Ignore /cdn-cgi telemetry requests without throwing 404
+  if (reqPath.startsWith('/cdn-cgi/')) {
+    res.writeHead(204);
+    return res.end();
+  }
 
   // API to receive crawled pages from user's Chrome console
   if (req.method === 'POST' && reqPath === '/api/save-page') {
